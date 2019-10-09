@@ -2,38 +2,18 @@ import React, {Component} from 'react'
 import Space from '../components/Space'
 
 class Board extends Component {
-  constructor(){
-    super();
-    this.state = {
-      squares: Array(9).fill(null),
-      xIsNext: true
-    }
-  }
-
-  handleClick(i) {
-    const squares = this.state.squares.slice()
-    squares[i] = this.state.xIsNext ? 'X' : 'O'
-    this.setState({
-      squares: squares,
-      xIsNext: !this.state.xIsNext
-    })
-  }
 
   renderSquare(i) {
     return (
-      <Space value={ this.state.squares[i] }
-        onClick={ () => this.handleClick(i)}
+      <Space value={ this.props.squares[i] }
+        onClick={ () => this.props.onClick(i)}
       />
     )
   }
 
   render() {
-    const status = 'Next player: X'
     return (
       <>
-        <div className='status'>
-          { status }
-        </div>
         <div className='board-row'>
           { this.renderSquare(0) }
           { this.renderSquare(1) }
