@@ -59,7 +59,7 @@ class Game extends Component {
 
   render() {
     let history = this.state.history
-    let current = history[history.length-1]
+    let current = history[this.state.setCounter]
     let winner = this.calculateWinner(current.squares)
 
     const moves = history.map((step, move) => {
